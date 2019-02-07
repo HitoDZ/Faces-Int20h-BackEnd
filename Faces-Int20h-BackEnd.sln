@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
@@ -6,6 +6,8 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", "{C2BACA06-3DB3-4C33-87EB-1C5156F0CB36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr", "Api.Flickr\Api.Flickr.csproj", "{8FA30FBA-5567-4598-AF27-9B41817897E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr.Tests", "Api.Flickr.Tests\Api.Flickr.Tests.csproj", "{94949927-B0F2-4EE9-A4AD-ED0424CD349A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

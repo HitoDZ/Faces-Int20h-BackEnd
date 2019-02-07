@@ -22,7 +22,7 @@ namespace Api.Flickr
             _options = options;
         }
 
-        public async Task<FlickrPhotosetsGetPhotosResponse> GetPhotos()
+        public async Task<FlickrPhotosetsGetPhotosResponse> GetPhotosAsync()
         {
             try
             {
