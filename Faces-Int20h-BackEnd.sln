@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
@@ -21,6 +21,10 @@ Global
 		{8FA30FBA-5567-4598-AF27-9B41817897E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FA30FBA-5567-4598-AF27-9B41817897E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FA30FBA-5567-4598-AF27-9B41817897E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
