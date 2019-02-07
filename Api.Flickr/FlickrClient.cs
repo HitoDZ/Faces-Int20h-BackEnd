@@ -1,14 +1,22 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Api.Flickr.Abstractions;
 using Api.Flickr.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Api.Flickr
 {
     public sealed class FlickrClient : IFlickrClient, IDisposable
     {
+        private static readonly JsonSerializer _serializer = JsonSerializer.Create(
+            new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            });
+        
         private readonly HttpClient _client = new HttpClient
         {
             BaseAddress = new Uri("https://api.flickr.com/services/"),
@@ -33,13 +41,13 @@ namespace Api.Flickr
                     return new FlickrPhotosetsGetPhotosResponse(0, "Response is null");
 
                 dynamic json = JsonConvert.DeserializeObject(response);
-                
-                switch (json.stat)
+
+                switch ((string) json.stat)
                 {
-                    case "fail": return new FlickrPhotosetsGetPhotosResponse(json.code, json.message);
+                    case "fail": return new FlickrPhotosetsGetPhotosResponse((int) json.code, (string) json.message);
                     
-                    case "ok":
-                        return new FlickrPhotosetsGetPhotosResponse(json.photoset.photo);
+                    case "ok": return new FlickrPhotosetsGetPhotosResponse(json.photoset.photo
+                        .ToObject<List<FlickrPhotoModel>>(_serializer));
 
                     default: return new FlickrPhotosetsGetPhotosResponse(0, "stat is incorrect");
                 }

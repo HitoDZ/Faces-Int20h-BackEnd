@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Api.Flickr.Models
 {
     /// <summary>
@@ -5,31 +7,25 @@ namespace Api.Flickr.Models
     /// </summary>
     public sealed class FlickrPhotoModel
     {
-        internal FlickrPhotoModel(string id, string secret, string server, int farm, string title)
+        internal FlickrPhotoModel()
         {
-            Title = title;
-
-            _id = id;
-            _secret = secret;
-            _server = server;
-            _farm = farm;
         }
 
         /// <summary>
         /// Title of photo.
         /// </summary>
-        public readonly string Title;
+        [JsonProperty] public string Title { get; internal set; }
 
-        private readonly string _id;
-        private readonly string _secret;
-        private readonly string _server;
-        private readonly int _farm;
+        [JsonProperty] internal string Id { private get; set; }
+        [JsonProperty] internal string Secret { private get; set; }
+        [JsonProperty] internal string Server { private get; set; }
+        [JsonProperty] internal int Farm { private get; set; }
 
         /// <summary>
         /// Returns an url of photo for specified size. Visit https://www.flickr.com/services/api/misc.urls.html for more info.
         /// </summary>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        public string Photo(char size = 'q') => $"https://farm{_farm}.staticflickr.com/{_server}/{_id}_{_secret}_{size}.jpg";
+        /// <param name="size">Size identifier</param>
+        /// <returns>Url to the photo</returns>
+        public string Photo(char size = 'q') => $"https://farm{Farm}.staticflickr.com/{Server}/{Id}_{Secret}_{size}.jpg";
     }
 }
