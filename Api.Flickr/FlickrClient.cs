@@ -25,10 +25,7 @@ namespace Api.Flickr
 
         private readonly FlickrClientOptions _options;
 
-        public FlickrClient(FlickrClientOptions options)
-        {
-            _options = options;
-        }
+        public FlickrClient(FlickrClientOptions options) => _options = options;
 
         public async Task<FlickrPhotosetsGetPhotosResponse> GetPhotosAsync()
         {
@@ -38,23 +35,23 @@ namespace Api.Flickr
                 
                 var response = await _client.GetStringAsync(requestUri);
                 if (response == null)
-                    return new FlickrPhotosetsGetPhotosResponse(0, "Response is null");
+                    return new FlickrPhotosetsGetPhotosResponse("Response is null");
 
                 dynamic json = JsonConvert.DeserializeObject(response);
 
                 switch ((string) json.stat)
                 {
-                    case "fail": return new FlickrPhotosetsGetPhotosResponse((int) json.code, (string) json.message);
+                    case "fail": return new FlickrPhotosetsGetPhotosResponse((string) json.message);
                     
                     case "ok": return new FlickrPhotosetsGetPhotosResponse(json.photoset.photo
                         .ToObject<List<FlickrPhotoModel>>(_serializer));
 
-                    default: return new FlickrPhotosetsGetPhotosResponse(0, "stat is incorrect");
+                    default: return new FlickrPhotosetsGetPhotosResponse("stat is incorrect");
                 }
             }
             catch (Exception e)
             {
-                return new FlickrPhotosetsGetPhotosResponse(0, e.ToString());
+                return new FlickrPhotosetsGetPhotosResponse(e.ToString());
             }
         }
 
