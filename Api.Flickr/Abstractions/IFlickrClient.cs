@@ -5,6 +5,6 @@ namespace Api.Flickr.Abstractions
 {
     public interface IFlickrClient
     {
-        Task<FlickrPhotosetsGetPhotosResponse> GetPhotosAsync();
+        Task<FlickrPhotosetsGetPhotosResult> GetPhotosAsync();
     }
 }
