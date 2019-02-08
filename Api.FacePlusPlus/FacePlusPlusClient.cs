@@ -20,7 +20,7 @@ namespace Api.FacePlusPlus
 
         public FacePlusPlusClient(FacePlusPlusClientOptions options) => _options = options;
 
-        public async Task<List<FacePlusPlusEmotionResult>> GetEmotionsForPhoto(string photoUrl)
+        public async Task<FacePlusPlusDetectResult> GetEmotionsForPhoto(string photoUrl)
         {
             var requestUri = $"detect?api_key={_options.ApiKey}&api_secret={_options.ApiSecret}&image_url={photoUrl}&return_attributes=emotion";
             var response = await _client.GetAsync(requestUri);

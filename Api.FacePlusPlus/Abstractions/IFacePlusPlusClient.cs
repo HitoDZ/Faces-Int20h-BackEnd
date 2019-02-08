@@ -6,6 +6,6 @@ namespace Api.FacePlusPlus.Abstractions
 {
     public interface IFacePlusPlusClient
     {
-        Task<List<FacePlusPlusEmotionResult>> GetEmotionsForPhoto(string photoUrl);
+        Task<FacePlusPlusDetectResult> GetEmotionsForPhoto(string photoUrl);
     }
 }
