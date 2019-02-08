@@ -20,14 +20,14 @@ namespace Api.FacePlusPlus
 
         public FacePlusPlusClient(FacePlusPlusClientOptions options) => _options = options;
 
-        public async Task<FacePlusPlusDetectResult> GetEmotionsForPhoto(string photoUrl)
+        public async Task<FacePlusPlusDetectResult> GetEmotionsForPhotoAsync(string photoUrl)
         {
             var requestUri = $"detect?api_key={_options.ApiKey}&api_secret={_options.ApiSecret}&image_url={photoUrl}&return_attributes=emotion";
-            var response = await _client.GetStringAsync(requestUri);
+            var response = await _client.PostAsync(requestUri, new StringContent(""));
 
             try
             {
-                dynamic json = JsonConvert.DeserializeObject(response);
+                dynamic json = JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
 
                 string errorMessage = json.error_message;
                 if (errorMessage != null)
@@ -35,7 +35,7 @@ namespace Api.FacePlusPlus
 
                 var list = new List<FacePlusPlusEmotionResult>();
                 foreach (var face in json.faces)
-                    list.Add((FacePlusPlusEmotionResult) face.attributes.emotion.ToObject());
+                    list.Add(face.attributes.emotion.ToObject<FacePlusPlusEmotionResult>());
 
                 return new FacePlusPlusDetectResult(list);
             }
