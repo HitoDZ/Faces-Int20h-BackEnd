@@ -20,5 +20,20 @@ namespace Api.FacePlusPlus.Tests
             Assert.NotNull(result.Emotions);
             Assert.Equal(1, result.Emotions.Count);
         }
+        
+        [Fact]
+        public async Task FacePlusPlusDetect_Fail()
+        {
+            var client = new FacePlusPlusClient(new FacePlusPlusClientOptions
+            {
+                ApiKey = "lchXf5hKsgWYCB9OEQ-GhuKQpIC9HdAy",
+                ApiSecret = "CzRh0RUlt6zkEYNSY0uWYBFNBMBeOzjr"
+            });
+
+            var result = await client.GetEmotionsForPhotoAsync("https://lolzteam.net/data/avatars/l/621/621469.jpg");
+            
+            Assert.NotNull(result.ErrorMessage);
+            Assert.Null(result.Emotions);
+        }
     }
 }
