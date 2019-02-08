@@ -25,17 +25,24 @@ namespace Api.FacePlusPlus
             var requestUri = $"detect?api_key={_options.ApiKey}&api_secret={_options.ApiSecret}&image_url={photoUrl}&return_attributes=emotion";
             var response = await _client.GetStringAsync(requestUri);
 
-            dynamic json = JsonConvert.DeserializeObject(response);
-            
-            string errorMessage = json.error_message;
-            if (errorMessage != null)
-                return new FacePlusPlusDetectResult(errorMessage);
+            try
+            {
+                dynamic json = JsonConvert.DeserializeObject(response);
 
-            var list = new List<FacePlusPlusEmotionResult>();
-            foreach (var face in json.faces)
-                list.Add((FacePlusPlusEmotionResult) face.attributes.emotion.ToObject());
-            
-            return new FacePlusPlusDetectResult(list);
+                string errorMessage = json.error_message;
+                if (errorMessage != null)
+                    return new FacePlusPlusDetectResult(errorMessage);
+
+                var list = new List<FacePlusPlusEmotionResult>();
+                foreach (var face in json.faces)
+                    list.Add((FacePlusPlusEmotionResult) face.attributes.emotion.ToObject());
+
+                return new FacePlusPlusDetectResult(list);
+            }
+            catch (Exception e)
+            {
+                return new FacePlusPlusDetectResult(e.ToString());
+            }
         }
 
         public void Dispose() => _client.Dispose();
