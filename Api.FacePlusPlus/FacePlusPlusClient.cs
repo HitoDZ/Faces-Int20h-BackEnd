@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Api.FacePlusPlus.Abstractions;
 using Api.FacePlusPlus.Models;
+using Newtonsoft.Json;
 
 namespace Api.FacePlusPlus
 {
@@ -23,9 +24,19 @@ namespace Api.FacePlusPlus
         public async Task<FacePlusPlusDetectResult> GetEmotionsForPhoto(string photoUrl)
         {
             var requestUri = $"detect?api_key={_options.ApiKey}&api_secret={_options.ApiSecret}&image_url={photoUrl}&return_attributes=emotion";
-            var response = await _client.GetAsync(requestUri);
+            var response = await _client.GetStringAsync(requestUri);
 
-            return null;
+            dynamic json = JsonConvert.DeserializeObject(response);
+            
+            string errorMessage = json.error_message;
+            if (errorMessage != null)
+                return new FacePlusPlusDetectResult(errorMessage);
+
+            var list = new List<FacePlusPlusEmotionResult>();
+            foreach (var face in json.faces)
+                list.Add((FacePlusPlusEmotionResult) face.attributes.emotion.ToObject());
+            
+            return new FacePlusPlusDetectResult(list);
         }
 
         public void Dispose() => _client.Dispose();
