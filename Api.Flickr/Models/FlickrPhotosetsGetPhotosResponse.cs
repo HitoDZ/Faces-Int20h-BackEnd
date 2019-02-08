@@ -9,7 +9,7 @@ namespace Api.Flickr.Models
             ErrorMessage = message;
         }
 
-        internal FlickrPhotosetsGetPhotosResponse(IReadOnlyCollection<FlickrPhotoModel> photos)
+        internal FlickrPhotosetsGetPhotosResponse(List<FlickrPhotoModel> photos)
         {
             Photos = photos;
         }
@@ -17,10 +17,6 @@ namespace Api.Flickr.Models
         public bool IsOk => ErrorMessage == null;
         
         public readonly string ErrorMessage;
-        
-        /// <summary>
-        /// Read-only collection of photos. Is null if <see cref="Status"/> doesn't equal to <see cref="FlickrPhotosetsGetPhotosResponseStatus.Okay"/>
-        /// </summary>
-        public readonly IReadOnlyCollection<FlickrPhotoModel> Photos;
+        public readonly List<FlickrPhotoModel> Photos;
     }
 }
