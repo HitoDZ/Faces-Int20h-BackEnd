@@ -6,11 +6,11 @@ namespace Api.FacePlusPlus.Models
     {
         internal FacePlusPlusDetectResult(string errorMessage) => ErrorMessage = errorMessage;
 
-        internal FacePlusPlusDetectResult(List<FacePlusPlusEmotionResult> emotions) => Emotions = emotions;
+        internal FacePlusPlusDetectResult(List<FacePlusPlusEmotionModel> emotions) => Emotions = emotions;
 
         public bool IsOk => ErrorMessage == null;
         
         public readonly string ErrorMessage;
-        public readonly List<FacePlusPlusEmotionResult> Emotions;
+        public readonly List<FacePlusPlusEmotionModel> Emotions;
     }
 }
