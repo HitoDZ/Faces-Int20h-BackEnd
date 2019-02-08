@@ -5,6 +5,8 @@ namespace Api.FacePlusPlus.Tests
 {
     public class FacePlusPlusDetect
     {
+        private const string PHOTO_URL = "https://lolzteam.net/data/avatars/l/621/621469.jpg";
+        
         [Fact]
         public async Task FacePlusPlusDetect_Success()
         {
@@ -14,7 +16,7 @@ namespace Api.FacePlusPlus.Tests
                 ApiSecret = Defaults.API_SECRET
             });
 
-            var result = await client.GetEmotionsForPhotoAsync("https://lolzteam.net/data/avatars/l/621/621469.jpg");
+            var result = await client.GetEmotionsForPhotoAsync(PHOTO_URL);
             
             Assert.Null(result.ErrorMessage);
             Assert.NotNull(result.Emotions);
@@ -31,7 +33,7 @@ namespace Api.FacePlusPlus.Tests
                 ApiSecret = "qffKT2SzsLtRJqwGHopiAqvUhoR3b44F"
             });
 
-            var result = await client.GetEmotionsForPhotoAsync("https://lolzteam.net/data/avatars/l/621/621469.jpg");
+            var result = await client.GetEmotionsForPhotoAsync(PHOTO_URL);
             
             Assert.NotNull(result.ErrorMessage);
             Assert.Null(result.Emotions);
