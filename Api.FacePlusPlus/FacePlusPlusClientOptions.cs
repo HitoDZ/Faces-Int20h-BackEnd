@@ -1,6 +1,6 @@
 namespace Api.FacePlusPlus
 {
-    public class FacePlusPlusClientOptions
+    public sealed class FacePlusPlusClientOptions
     {
         public string ApiKey;
         public string ApiSecret;
