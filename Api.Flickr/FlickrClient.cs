@@ -27,8 +27,8 @@ namespace Api.Flickr
                 var requestUri = $"rest/?method=flickr.photosets.getPhotos&api_key={_options.ApiKey}&photoset_id={_options.PhotosetId}&user_id={_options.UserId}&format=json&nojsoncallback=1";
                 
                 var response = await _client.GetStringAsync(requestUri);
-                if (response == null)
-                    return new FlickrPhotosetsGetPhotosResult("Response is null");
+                if (string.IsNullOrEmpty(response))
+                    return new FlickrPhotosetsGetPhotosResult("Response content is null or empty");
 
                 dynamic json = JsonConvert.DeserializeObject(response);
 
