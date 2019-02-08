@@ -2,9 +2,9 @@ using Newtonsoft.Json;
 
 namespace Api.FacePlusPlus.Models
 {
-    public sealed class FacePlusPlusEmotionResult
+    public sealed class FacePlusPlusEmotionModel
     {
-        internal FacePlusPlusEmotionResult()
+        internal FacePlusPlusEmotionModel()
         {
         }
         
