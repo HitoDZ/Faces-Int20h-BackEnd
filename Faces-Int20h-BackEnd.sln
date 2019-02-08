@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.FacePlusPlus", "Api.FacePlusPlus\Api.FacePlusPlus.csproj", "{B320248E-0547-4CD9-8CC9-6CEBFB30D72D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.FacePlusPlus.Tests", "Tests\Api.FacePlusPlus.Tests\Api.FacePlusPlus.Tests.csproj", "{E1FA28EA-F5ED-4701-B67E-DB8A6278AB6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.FacePlusPlus.Tests", "Tests\Api.FacePlusPlus.Tests\Api.FacePlusPlus.Tests.csproj", "{C2CCE87E-5F49-4570-AFE5-E8DDD23E63C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr", "Api.Flickr\Api.Flickr.csproj", "{8FA30FBA-5567-4598-AF27-9B41817897E1}"
 EndProject
@@ -39,6 +39,10 @@ Global
 		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94949927-B0F2-4EE9-A4AD-ED0424CD349A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CCE87E-5F49-4570-AFE5-E8DDD23E63C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CCE87E-5F49-4570-AFE5-E8DDD23E63C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CCE87E-5F49-4570-AFE5-E8DDD23E63C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CCE87E-5F49-4570-AFE5-E8DDD23E63C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
