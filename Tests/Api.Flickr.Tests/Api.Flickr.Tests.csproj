@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Api.Flickr\Api.Flickr.csproj" />
+      <ProjectReference Include="..\..\Api.Flickr\Api.Flickr.csproj" />
     </ItemGroup>
 
 </Project>
