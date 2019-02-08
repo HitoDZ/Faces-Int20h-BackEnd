@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr", "Api.Flickr\Api.Flickr.csproj", "{8FA30FBA-5567-4598-AF27-9B41817897E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr.Tests", "Api.Flickr.Tests\Api.Flickr.Tests.csproj", "{94949927-B0F2-4EE9-A4AD-ED0424CD349A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr.Tests", "Tests\Api.Flickr.Tests\Api.Flickr.Tests.csproj", "{94949927-B0F2-4EE9-A4AD-ED0424CD349A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
