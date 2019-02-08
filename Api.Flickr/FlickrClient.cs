@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Api.Flickr.Abstractions;
 using Api.Flickr.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Api.Flickr
 {
@@ -21,7 +20,7 @@ namespace Api.Flickr
 
         public FlickrClient(FlickrClientOptions options) => _options = options;
 
-        public async Task<FlickrPhotosetsGetPhotosResponse> GetPhotosAsync()
+        public async Task<FlickrPhotosetsGetPhotosResult> GetPhotosAsync()
         {
             try
             {
@@ -29,23 +28,23 @@ namespace Api.Flickr
                 
                 var response = await _client.GetStringAsync(requestUri);
                 if (response == null)
-                    return new FlickrPhotosetsGetPhotosResponse("Response is null");
+                    return new FlickrPhotosetsGetPhotosResult("Response is null");
 
                 dynamic json = JsonConvert.DeserializeObject(response);
 
                 switch ((string) json.stat)
                 {
-                    case "fail": return new FlickrPhotosetsGetPhotosResponse((string) json.message);
+                    case "fail": return new FlickrPhotosetsGetPhotosResult((string) json.message);
                     
-                    case "ok": return new FlickrPhotosetsGetPhotosResponse(json.photoset.photo
+                    case "ok": return new FlickrPhotosetsGetPhotosResult(json.photoset.photo
                         .ToObject<List<FlickrPhotoModel>>());
 
-                    default: return new FlickrPhotosetsGetPhotosResponse("stat is incorrect");
+                    default: return new FlickrPhotosetsGetPhotosResult("stat is incorrect");
                 }
             }
             catch (Exception e)
             {
-                return new FlickrPhotosetsGetPhotosResponse(e.ToString());
+                return new FlickrPhotosetsGetPhotosResult(e.ToString());
             }
         }
 

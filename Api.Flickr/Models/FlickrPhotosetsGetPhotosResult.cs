@@ -2,14 +2,14 @@ using System.Collections.Generic;
 
 namespace Api.Flickr.Models
 {
-    public sealed class FlickrPhotosetsGetPhotosResponse
+    public sealed class FlickrPhotosetsGetPhotosResult
     {
-        internal FlickrPhotosetsGetPhotosResponse(string message)
+        internal FlickrPhotosetsGetPhotosResult(string message)
         {
             ErrorMessage = message;
         }
 
-        internal FlickrPhotosetsGetPhotosResponse(List<FlickrPhotoModel> photos)
+        internal FlickrPhotosetsGetPhotosResult(List<FlickrPhotoModel> photos)
         {
             Photos = photos;
         }
