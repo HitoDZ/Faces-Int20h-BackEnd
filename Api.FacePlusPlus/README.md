@@ -12,8 +12,8 @@ public void ConfigureServices(IServiceCollection services)
         return new FacePlusPlusClient(
             new FacePlusPlusClientOptions
             {
-                ApiKey = "lchXf5hKsgWYCB9OEQ-GhuKQpIC9HdAy",
-                ApiSecret = "CzRh0RUlt6zkEYNSY0uWYBFNBMBeOzjp"
+                ApiKey = "api_key",
+                ApiSecret = "api_secret"
             });
     });
 }

@@ -10,8 +10,8 @@ namespace Api.FacePlusPlus.Tests
         {
             var client = new FacePlusPlusClient(new FacePlusPlusClientOptions
             {
-                ApiKey = "lchXf5hKsgWYCB9OEQ-GhuKQpIC9HdAy",
-                ApiSecret = "CzRh0RUlt6zkEYNSY0uWYBFNBMBeOzjp"
+                ApiKey = Defaults.API_KEY,
+                ApiSecret = Defaults.API_SECRET
             });
 
             var result = await client.GetEmotionsForPhotoAsync("https://lolzteam.net/data/avatars/l/621/621469.jpg");
@@ -26,8 +26,9 @@ namespace Api.FacePlusPlus.Tests
         {
             var client = new FacePlusPlusClient(new FacePlusPlusClientOptions
             {
-                ApiKey = "lchXf5hKsgWYCB9OEQ-GhuKQpIC9HdAy",
-                ApiSecret = "CzRh0RUlt6zkEYNSY0uWYBFNBMBeOzjr"
+                ApiKey = Defaults.API_KEY,
+                // incorrect api_secret
+                ApiSecret = "qffKT2SzsLtRJqwGHopiAqvUhoR3b44F"
             });
 
             var result = await client.GetEmotionsForPhotoAsync("https://lolzteam.net/data/avatars/l/621/621469.jpg");
