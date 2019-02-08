@@ -4,9 +4,7 @@ namespace Api.FacePlusPlus.Models
 {
     public sealed class FacePlusPlusEmotionModel
     {
-        internal FacePlusPlusEmotionModel()
-        {
-        }
+        internal FacePlusPlusEmotionModel() {}
         
         [JsonProperty] public decimal Sadness { get; internal set; }
         [JsonProperty] public decimal Neutral { get; internal set; }
