@@ -11,12 +11,6 @@ namespace Api.Flickr
 {
     public sealed class FlickrClient : IFlickrClient, IDisposable
     {
-        private static readonly JsonSerializer _serializer = JsonSerializer.Create(
-            new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            });
-        
         private readonly HttpClient _client = new HttpClient
         {
             BaseAddress = new Uri("https://api.flickr.com/services/"),
@@ -44,7 +38,7 @@ namespace Api.Flickr
                     case "fail": return new FlickrPhotosetsGetPhotosResponse((string) json.message);
                     
                     case "ok": return new FlickrPhotosetsGetPhotosResponse(json.photoset.photo
-                        .ToObject<List<FlickrPhotoModel>>(_serializer));
+                        .ToObject<List<FlickrPhotoModel>>());
 
                     default: return new FlickrPhotosetsGetPhotosResponse("stat is incorrect");
                 }
