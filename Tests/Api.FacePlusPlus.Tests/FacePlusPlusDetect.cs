@@ -17,6 +17,7 @@ namespace Api.FacePlusPlus.Tests
             var result = await client.GetEmotionsForPhotoAsync("https://lolzteam.net/data/avatars/l/621/621469.jpg");
             
             Assert.Null(result.ErrorMessage);
+            Assert.NotNull(result.Emotions);
             Assert.Equal(1, result.Emotions.Count);
         }
     }
