@@ -10,7 +10,7 @@ namespace Api.Flickr.Tests
         {
             var client = new FlickrClient(new FlickrClientOptions
             {
-                ApiKey = "28968e00ebc529a31f878305c1df75c7",
+                ApiKey = Defaults.API_KEY,
                 UserId = "118310678@N03",
                 PhotosetId = "72157641322954544"
             });
@@ -29,7 +29,8 @@ namespace Api.Flickr.Tests
         {
             var client = new FlickrClient(new FlickrClientOptions
             {
-                ApiKey = "28968e00ebc529a31f878305c1df75c8",
+                // incorrect api_key
+                ApiKey = "etAZ7DrhMq2yqTtWxTNWKbQnwpPmGxZn",
                 UserId = "118310678@N03",
                 PhotosetId = "72157641322954544"
             });

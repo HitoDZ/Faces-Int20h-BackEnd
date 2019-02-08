@@ -12,7 +12,7 @@ public void ConfigureServices(IServiceCollection services)
         return new FlickrClient(
             new FlickrClientOptions
             {
-                ApiKey = "28968e00ebc529a31f878305c1df75c7",
+                ApiKey = "api_key",
                 UserId = "118310678@N03",
                 PhotosetId = "72157641322954544"
             });
