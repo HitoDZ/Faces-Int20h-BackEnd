@@ -18,7 +18,7 @@ namespace Api.FacePlusPlus.Tests
             
             Assert.Null(result.ErrorMessage);
             Assert.NotNull(result.Emotions);
-            Assert.Equal(1, result.Emotions.Count);
+            Assert.Single(result.Emotions);
         }
         
         [Fact]
