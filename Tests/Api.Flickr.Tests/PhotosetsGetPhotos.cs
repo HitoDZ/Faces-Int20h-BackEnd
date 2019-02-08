@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,7 +18,10 @@ namespace Api.Flickr.Tests
             var result = await client.GetPhotosAsync();
             
             Assert.Null(result.ErrorMessage);
-            Assert.NotNull(result.Photos.FirstOrDefault()?.Title);
+            Assert.NotNull(result.Photos);
+            
+            if (result.Photos.Count > 0)
+                Assert.NotNull(result.Photos[0].Title);
         }
         
         [Fact]
