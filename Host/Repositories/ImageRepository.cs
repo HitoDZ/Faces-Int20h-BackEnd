@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace Host.Repositories
 {
-    internal class ImageRepository
+    public class ImageRepository
     {
         private readonly MongoDbContext _context;
 

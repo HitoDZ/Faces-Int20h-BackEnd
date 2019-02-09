@@ -1,13 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Domain.Persistance;
+using Host.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
 {
     public class ImageController : ControllerBase
     {
-        [HttpGet(RouteConstants.Images)]
-        public IActionResult GetAll()
+        private readonly ImageRepository _repository;
+
+        public ImageController(ImageRepository repository)
         {
-            return Ok("hahahaha");
+            _repository = repository;
+        }
+
+        [HttpGet(RouteConstants.Images)]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok( await _repository.GetAll());
         }
 
     }
