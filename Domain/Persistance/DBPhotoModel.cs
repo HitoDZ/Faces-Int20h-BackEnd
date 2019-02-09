@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Mongo.Base.Models
 {
-    public sealed class PhotoModel
+    public sealed class DBPhotoModel
     {
         public string Url;
         [BsonId] public string Name;
