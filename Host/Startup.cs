@@ -26,7 +26,7 @@ namespace Host
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvcCore().AddJsonFormatters().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<MongoDbContext>(new MongoDbContext("mongodb://localhost"));
             services.AddTransient<ImageRepository>();
         }
