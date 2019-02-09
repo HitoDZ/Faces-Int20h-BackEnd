@@ -9,7 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Api.FacePlusPlus\Api.FacePlusPlus.csproj" />
       <ProjectReference Include="..\..\Api.Flickr\Api.Flickr.csproj" />
-      <ProjectReference Include="..\Mongo.Base\Mongo.Base.csproj" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>
