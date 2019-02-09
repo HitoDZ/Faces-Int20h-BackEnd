@@ -23,10 +23,11 @@ namespace Api.FacePlusPlus
         public async Task<FacePlusPlusDetectResult> GetEmotionsForPhotoAsync(string photoUrl)
         {
             var requestUri = $"detect?api_key={_options.ApiKey}&api_secret={_options.ApiSecret}&image_url={photoUrl}&return_attributes=emotion";
-            var response = await _client.PostAsync(requestUri, new StringContent(""));
-
+            
             try
             {
+                var response = await _client.PostAsync(requestUri, new StringContent(""));
+                
                 dynamic json = JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
 
                 string errorMessage = json.error_message;
