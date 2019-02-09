@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr", "Api.Flickr\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Flickr.Tests", "Tests\Api.Flickr.Tests\Api.Flickr.Tests.csproj", "{94949927-B0F2-4EE9-A4AD-ED0424CD349A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Base", "Mongo.Base\Mongo.Base.csproj", "{4DB61A49-59F1-45FC-956C-A66321E49FA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Base", "Mongo\Mongo.Base\Mongo.Base.csproj", "{4DB61A49-59F1-45FC-956C-A66321E49FA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
