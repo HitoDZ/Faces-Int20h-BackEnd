@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Flickr", "Api.Flickr\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Flickr.Tests", "Tests\Api.Flickr.Tests\Api.Flickr.Tests.csproj", "{94949927-B0F2-4EE9-A4AD-ED0424CD349A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Mongo\Mongo.Base\Domain.csproj", "{4DB61A49-59F1-45FC-956C-A66321E49FA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Mongo\Domain\Domain.csproj", "{4DB61A49-59F1-45FC-956C-A66321E49FA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8C7F201A-F184-4745-BEBD-5A3A9A8B487D}"
 EndProject

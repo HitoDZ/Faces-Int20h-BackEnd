@@ -1,6 +1,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Mongo.Base.Models
+namespace Domain.Models
 {
     public sealed class Emotion
     {

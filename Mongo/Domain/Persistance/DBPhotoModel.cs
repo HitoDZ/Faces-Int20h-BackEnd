@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Domain.Models;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Mongo.Base.Models
+namespace Domain.Persistance
 {
     public sealed class DBPhotoModel
     {
