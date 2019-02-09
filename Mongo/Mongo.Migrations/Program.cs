@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Api.FacePlusPlus;
 using Api.Flickr;
 using Api.Flickr.Models;
+using Domain.Models;
+using Domain.Persistance;
+using MongoDB.Driver;
 
 namespace Mongo.Migrations
 {
@@ -12,6 +17,12 @@ namespace Mongo.Migrations
             ApiKey = Defaults.FLICKR_API_KEY,
             UserId = "118310678@N03",
             PhotosetId = "72157641322954544"
+        };
+
+        private static readonly FacePlusPlusClientOptions _faceClientOptions = new FacePlusPlusClientOptions
+        {
+            ApiKey = Defaults.FACE_API_KEY,
+            ApiSecret = Defaults.FACE_API_SECRET
         };
         
         internal static async Task Main(string[] args)
@@ -30,6 +41,51 @@ namespace Mongo.Migrations
             
             Info("Successfully received the list of photos from Flickr API");
             Info($"Count of photos: {flickrResult.Photos.Count}");
+
+            if (flickrResult.Photos.Count == 0)
+            {
+                Error("List of photos is empty");
+                return;
+            }
+
+            var context = new MongoDbContext("mongodb://localhost");
+            
+            using (var faceClient = new FacePlusPlusClient(_faceClientOptions))
+                foreach (var photo in flickrResult.Photos)
+                {
+                    if (await context.Photos.Find(p => p.Name == photo.Title).AnyAsync())
+                        continue;
+
+                    var photoUrl = photo.Photo();
+                    var faceResult = await faceClient.GetEmotionsForPhotoAsync(photoUrl);
+
+                    if (!faceResult.IsOk)
+                    {
+                        Error($"Error occurred while processing photo named {photo.Title}");
+                        Error(faceResult.ErrorMessage);
+                        return;
+                    }
+
+                    var emotions = new List<Emotion>();
+                    foreach (var emotion in faceResult.Emotions)
+                        emotions.Add(new Emotion
+                        {
+                            Fear = emotion.Fear,
+                            Anger = emotion.Anger,
+                            Disgust = emotion.Disgust,
+                            Neutral = emotion.Neutral,
+                            Sadness = emotion.Sadness,
+                            Surprise = emotion.Surprise,
+                            Happiness = emotion.Happiness
+                        });
+                    
+                    await context.Photos.InsertOneAsync(new DBPhotoModel
+                    {
+                        Name = photo.Title,
+                        Url = photoUrl,
+                        Emotions = emotions
+                    });
+                }
         }
 
         private static void Error(string message)
