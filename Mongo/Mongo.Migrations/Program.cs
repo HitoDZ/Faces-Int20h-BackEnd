@@ -92,8 +92,10 @@ namespace Mongo.Migrations
                 });
                 Console.WriteLine(" '" + photo.Title + " Added'");
             }
-
+            
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("All data ready! :)");
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         private static void Error(string message)
