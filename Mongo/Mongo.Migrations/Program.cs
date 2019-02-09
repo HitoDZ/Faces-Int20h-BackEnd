@@ -49,43 +49,51 @@ namespace Mongo.Migrations
             }
 
             var context = new MongoDbContext("mongodb://localhost");
+            int i = 0;
             
             using (var faceClient = new FacePlusPlusClient(_faceClientOptions))
-                foreach (var photo in flickrResult.Photos)
+            foreach (var photo in flickrResult.Photos)
+            {
+                Console.Write("Processing - " + ++i);
+                if (await context.Photos.Find(p => p.Name == photo.Title).AnyAsync())
                 {
-                    if (await context.Photos.Find(p => p.Name == photo.Title).AnyAsync())
-                        continue;
-
-                    var photoUrl = photo.Photo();
-                    var faceResult = await faceClient.GetEmotionsForPhotoAsync(photoUrl);
-
-                    if (!faceResult.IsOk)
-                    {
-                        Error($"Error occurred while processing photo named {photo.Title}");
-                        Error(faceResult.ErrorMessage);
-                        return;
-                    }
-
-                    var emotions = new List<Emotion>();
-                    foreach (var emotion in faceResult.Emotions)
-                        emotions.Add(new Emotion
-                        {
-                            Fear = emotion.Fear,
-                            Anger = emotion.Anger,
-                            Disgust = emotion.Disgust,
-                            Neutral = emotion.Neutral,
-                            Sadness = emotion.Sadness,
-                            Surprise = emotion.Surprise,
-                            Happiness = emotion.Happiness
-                        });
-                    
-                    await context.Photos.InsertOneAsync(new DBPhotoModel
-                    {
-                        Name = photo.Title,
-                        Url = photoUrl,
-                        Emotions = emotions
-                    });
+                    Console.WriteLine(" '" + photo.Title + " already Exist'");
+                    continue;
                 }
+
+                var photoUrl = photo.Photo();
+                var faceResult = await faceClient.GetEmotionsForPhotoAsync(photoUrl);
+
+                if (!faceResult.IsOk)
+                {
+                    Error($"Error occurred while processing photo named {photo.Title}");
+                    Error(faceResult.ErrorMessage);
+                    return;
+                }
+
+                var emotions = new List<Emotion>();
+                foreach (var emotion in faceResult.Emotions)
+                    emotions.Add(new Emotion
+                    {
+                        Fear = emotion.Fear,
+                        Anger = emotion.Anger,
+                        Disgust = emotion.Disgust,
+                        Neutral = emotion.Neutral,
+                        Sadness = emotion.Sadness,
+                        Surprise = emotion.Surprise,
+                        Happiness = emotion.Happiness
+                    });
+                
+                await context.Photos.InsertOneAsync(new DBPhotoModel
+                {
+                    Name = photo.Title,
+                    Url = photoUrl,
+                    Emotions = emotions
+                });
+                Console.WriteLine(" '" + photo.Title + " Added'");
+            }
+
+            Console.WriteLine("All data ready! :)");
         }
 
         private static void Error(string message)
