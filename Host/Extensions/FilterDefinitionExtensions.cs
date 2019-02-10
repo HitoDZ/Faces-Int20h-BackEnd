@@ -67,7 +67,7 @@ namespace Host.Extensions
 
             foreach (var (key, (command, percent)) in dict)
                 filters.Add(new BsonDocument(string.Concat("Emotions.", key.FirstToUpper()),
-                    new BsonDocument(command, percent.ToString(_culture))));
+                    new BsonDocument(command, Convert.ToInt64(percent * 10000m))));
 
             return filters.Count == 0 ? Filter.Empty : filters.Count == 1 ? filters[0] : Builder.Filter.And(filters);
         }
