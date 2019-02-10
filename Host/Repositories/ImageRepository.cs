@@ -17,7 +17,7 @@ namespace Host.Repositories
        
         public async Task<IReadOnlyCollection<DBPhotoModel>> GetAll()
         {
-            return await _context.Photos.Find(_ => true).ToListAsync();
+            return await _context.Photos.Find(FilterDefinition<DBPhotoModel>.Empty).ToListAsync();
         }
     }
 }
