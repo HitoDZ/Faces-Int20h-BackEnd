@@ -57,7 +57,7 @@ namespace Mongo.Migrations
                 Console.Write("Processing - " + ++i);
                 if (await context.Photos.Find(p => p.Name == photo.Title).AnyAsync())
                 {
-                    Console.WriteLine(" '" + photo.Title + " already Exist'");
+                    Info(" '" + photo.Title + " already Exist'");
                     continue;
                 }
 
@@ -90,11 +90,11 @@ namespace Mongo.Migrations
                     Url = photoUrl,
                     Emotions = emotions
                 });
-                Console.WriteLine(" '" + photo.Title + " Added'");
+                Info(" '" + photo.Title + " Added'");
             }
             
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("All data ready! :)");
+            Info("All data ready! :)");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
