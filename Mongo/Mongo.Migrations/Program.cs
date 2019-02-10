@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.FacePlusPlus;
@@ -49,7 +49,7 @@ namespace Mongo.Migrations
             }
 
             var context = new MongoDbContext("mongodb://localhost");
-            int i = 0;
+            var i = 0;
             
             using (var faceClient = new FacePlusPlusClient(_faceClientOptions))
             foreach (var photo in flickrResult.Photos)
