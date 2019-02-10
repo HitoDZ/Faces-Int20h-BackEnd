@@ -13,7 +13,7 @@ namespace Host
                 .UseStartup<Startup>()
                 .UseSockets()
                 .UseUrls("http://localhost:12345")
-                .UseEnvironment(EnvironmentName.Staging)
+                .UseEnvironment(EnvironmentName.Development)
                 .CaptureStartupErrors(true)
                 .SuppressStatusMessages(false)
                 .UseShutdownTimeout(TimeSpan.FromSeconds(10d))
