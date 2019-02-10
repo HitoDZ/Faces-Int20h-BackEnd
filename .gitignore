@@ -330,4 +330,4 @@ ASALocalRun/
 .mfractor/
 Mongo/Mongo.Migrations/Defaults.cs
 Api.FacePlusPlus/Defaults.cs
-Api.Flickr/Defaults.cs
+Defaults.cs
