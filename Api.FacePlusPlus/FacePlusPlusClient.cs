@@ -36,7 +36,8 @@ namespace Api.FacePlusPlus
 
                 var list = new List<FacePlusPlusEmotionModel>();
                 foreach (var face in json.faces)
-                    list.Add(face.attributes.emotion.ToObject<FacePlusPlusEmotionModel>());
+                    if (face.attributes != null)
+                        list.Add(face.attributes.emotion.ToObject<FacePlusPlusEmotionModel>());
 
                 return new FacePlusPlusDetectResult(list);
             }
