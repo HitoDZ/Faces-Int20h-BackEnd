@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Domain.Persistance;
 using Host.Constants;
 using Host.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +18,10 @@ namespace Host.Controllers
         }
 
         [HttpGet(RouteConstants.Images)]
-        public async Task<IActionResult> GetAll()
+        public async Task<ActionResult<IReadOnlyCollection<DBPhotoModel>>> Get(
+            [FromQuery] int? offset = null, [FromQuery] int? count = null)
         {
-            return Ok( await _repository.GetAll());
+            return await _repository.GetAsync(offset, count);
         }
-
     }
 }
