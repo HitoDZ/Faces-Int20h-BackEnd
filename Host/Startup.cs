@@ -1,5 +1,4 @@
 ﻿using Domain.Persistance;
-using Host.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +24,6 @@ namespace Host
             }).AddJsonFormatters().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
             services.AddSingleton(new MongoDbContext("mongodb://localhost"));
-            services.AddTransient<ImageRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
