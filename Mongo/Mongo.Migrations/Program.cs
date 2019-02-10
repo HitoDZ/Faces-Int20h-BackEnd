@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.FacePlusPlus;
@@ -61,8 +61,7 @@ namespace Mongo.Migrations
                     continue;
                 }
 
-                var photoUrl = photo.Photo();
-                var faceResult = await faceClient.GetEmotionsForPhotoAsync(photoUrl);
+                var faceResult = await faceClient.GetEmotionsForPhotoAsync(photo.Photo('c'));
 
                 if (!faceResult.IsOk)
                 {
@@ -87,7 +86,7 @@ namespace Mongo.Migrations
                 await context.Photos.InsertOneAsync(new DBPhotoModel
                 {
                     Name = photo.Title,
-                    Url = photoUrl,
+                    Url = photo.Photo(),
                     Emotions = emotions
                 });
                 Info(" '" + photo.Title + " Added'");
