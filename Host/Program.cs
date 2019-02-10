@@ -1,17 +1,23 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Host
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            await new WebHostBuilder()
+                .UseKestrel()
+                .UseStartup<Startup>()
+                .UseSockets()
+                .UseUrls("http://localhost:12345")
+                .UseEnvironment(EnvironmentName.Staging)
+                .CaptureStartupErrors(true)
+                .SuppressStatusMessages(false)
+                .UseShutdownTimeout(TimeSpan.FromSeconds(10d))
+                .Build().RunAsync();
         }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
     }
 }
