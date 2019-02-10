@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
 {
+    [Route(RouteConstants.Base)]
     public class ImageController : ControllerBase
     {
         private readonly ImageRepository _repository;
