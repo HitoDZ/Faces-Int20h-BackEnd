@@ -1,4 +1,4 @@
-﻿namespace Host.Controllers
+﻿namespace Host.Constants
 {
     public static class RouteConstants
     {
