@@ -27,7 +27,6 @@ namespace Host
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
