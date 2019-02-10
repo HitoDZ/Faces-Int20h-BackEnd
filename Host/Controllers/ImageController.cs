@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Domain.Persistance;
 using Host.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
